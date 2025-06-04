@@ -5,6 +5,13 @@ const usetPostStore = create( (set) => ({
   posts: [],
   post: null,
   actionFetchPostsByUserId: async (userId) => {
-    const res = await axios.get(` https://api-post-ts.onrender.com/api/v1/posts/${userId}`)
-  }
-}) )
+    const res = await axios.get(
+      ` https://api-post-ts.onrender.com/api/v1/posts/${userId}`
+    );
+
+    console.log("res", res.data);
+    set({ posts: res.data.posts });
+  },
+}));
+
+export default usetPostStore;
